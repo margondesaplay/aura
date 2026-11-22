@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1877f2"><title>AURA — Conecte-se</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <div id="auth-view" class="auth-wrap">
+    <section class="auth-card">
+      <div class="brand">AURA<span>●</span></div>
+      <h1>Conecte-se com o mundo.</h1>
+      <p class="muted">Entre ou crie sua conta para compartilhar momentos e conversar.</p>
+      <form id="auth-form">
+        <label for="email">Seu Gmail ou e-mail</label>
+        <input id="email" type="email" placeholder="voce@gmail.com" required autocomplete="email">
+        <label for="password">Senha</label>
+        <input id="password" type="password" placeholder="Mínimo de 8 caracteres" minlength="8" required autocomplete="current-password">
+        <div class="auth-actions">
+          <button class="primary" type="submit" id="login-btn">Entrar</button>
+          <button class="secondary" type="button" id="signup-btn">Criar conta</button>
+        </div>
+      </form>
+      <div class="separator"></div>
+      <form id="code-form">
+        <label for="otp">Código de confirmação enviado ao seu e-mail</label>
+        <div class="code-row"><input id="otp" inputmode="numeric" autocomplete="one-time-code" placeholder="Código de 6 dígitos"><button class="secondary" type="submit">Confirmar</button></div>
+      </form>
+      <p id="auth-message" class="notice" role="status"></p>
+      <small>Ao criar uma conta, você receberá um e-mail de confirmação. Verifique também a pasta de spam.</small>
+    </section>
+  </div>
+
+  <div id="app-view" class="hidden">
+    <header class="topbar">
+      <a class="brand" href="#">AURA<span>●</span></a>
+      <div class="top-search">Sua comunidade, em um só lugar</div>
+      <div class="user-menu"><span id="top-user"></span><button id="logout-btn" class="secondary small">Sair</button></div>
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="side-user"><div class="avatar" id="my-avatar">A</div><div><strong id="my-name">Meu perfil</strong><small id="my-email"></small></div></div>
+        <button class="side-link active" data-tab="feed">▤　Feed</button>
+        <button class="side-link" data-tab="messages">✉　Mensagens privadas</button>
+        <button class="side-link" data-tab="profile">◎　Meu perfil</button>
+        <div class="side-note">Compartilhe ideias, acompanhe publicações e converse em particular.</div>
+      </aside>
+      <main>
+        <section id="feed-tab" class="tab">
+          <div class="composer card">
+            <h2>O que está acontecendo?</h2>
+            <textarea id="post-content" maxlength="2000" placeholder="Compartilhe algo com a comunidade..."></textarea>
+            <div class="composer-bottom"><small>Suas publicações ficam visíveis para usuários cadastrados.</small><button id="publish-btn" class="primary">Publicar</button></div>
+          </div>
+          <div class="section-head"><h2>Feed da comunidade</h2><button id="refresh-feed" class="secondary small">Atualizar</button></div>
+          <div id="feed-list" class="stack"><div class="card muted">Carregando publicações...</div></div>
+        </section>
+        <section id="messages-tab" class="tab hidden">
+          <div class="section-head"><h2>Mensagens privadas</h2></div>
+          <div class="messages-layout card">
+            <div class="people-pane"><input id="people-search" placeholder="Buscar pessoas..."><div id="people-list"></div></div>
+            <div class="chat-pane"><div id="chat-heading" class="chat-heading">Escolha uma pessoa para conversar</div><div id="chat-list" class="chat-list"></div><form id="message-form" class="message-form"><input id="message-input" placeholder="Escreva uma mensagem..." maxlength="2000" disabled><button class="primary" disabled id="send-btn">Enviar</button></form></div>
+          </div>
+        </section>
+        <section id="profile-tab" class="tab hidden">
+          <div class="card profile-card"><h2>Meu perfil</h2><label>Nome de exibição</label><input id="profile-name" maxlength="40" placeholder="Como quer ser chamado?"><label>Sobre você</label><textarea id="profile-bio" maxlength="300" placeholder="Conte um pouco sobre você..."></textarea><button id="save-profile" class="primary">Salvar perfil</button><p id="profile-status" class="notice"></p></div>
+        </section>
+      </main>
+      <aside class="rightbar"><div class="card"><h3>Bem-vindo à AURA</h3><p class="muted">Uma rede social simples para compartilhar publicações e manter conversas privadas.</p><p class="muted tiny">Respeite as outras pessoas e não compartilhe informações sensíveis.</p></div></aside>
+    </div>
+    <div id="toast" class="toast" role="status"></div>
+  </div>
+  <script type="module" src="src/app.js"></script>
+</body></html>
